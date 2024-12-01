@@ -1,7 +1,7 @@
 package main
 
 import (
-	"advent_of_code/one/internal"
+	"advent_of_code/utils"
 	_ "embed"
 	"fmt"
 )
@@ -10,9 +10,8 @@ import (
 var input string
 
 func main() {
-	l, r := internal.ParseInput(input)
-
-	d := internal.ParseDiff(l, r)
+	l, r := utils.ParseInput(input)
+	d := utils.ParseDiff(l, r)
 
 	sum := 0
 	for _, p := range d {

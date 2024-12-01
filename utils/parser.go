@@ -1,10 +1,12 @@
-package internal
+package utils
 
 import (
+	"sort"
 	"strconv"
 	"strings"
 )
 
+// ParseInput splits the input into two sorted slices
 func ParseInput(input string) ([]int, []int) {
 	s := strings.ReplaceAll(input, "\r\n", "\n")
 	n := strings.ReplaceAll(s, "\r", "\n")
@@ -30,6 +32,9 @@ func ParseInput(input string) ([]int, []int) {
 			r = append(r, n)
 		}
 	}
+
+	sort.Ints(l)
+	sort.Ints(r)
 
 	return l, r
 }

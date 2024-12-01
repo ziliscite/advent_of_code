@@ -1,7 +1,7 @@
 package test
 
 import (
-	"advent_of_code/one/internal"
+	"advent_of_code/utils"
 	_ "embed"
 	"sort"
 	"testing"
@@ -14,7 +14,7 @@ var left = []int{3, 4, 2, 1, 3, 3}
 var right = []int{4, 3, 5, 3, 9, 3}
 
 func TestParseInput(t *testing.T) {
-	l, r := internal.ParseInput(input)
+	l, r := utils.ParseInput(input)
 
 	sort.Ints(left)
 	sort.Ints(right)
@@ -33,8 +33,8 @@ func TestParseInput(t *testing.T) {
 }
 
 func TestParseDiff(t *testing.T) {
-	l, r := internal.ParseInput(input)
-	d := internal.ParseDiff(l, r)
+	l, r := utils.ParseInput(input)
+	d := utils.ParseDiff(l, r)
 
 	for i, p := range d {
 		v := l[i] - r[i]
@@ -45,5 +45,19 @@ func TestParseDiff(t *testing.T) {
 		if p != v {
 			t.Errorf("Expected %d, got %d", v, p)
 		}
+	}
+}
+
+func TestSolution(t *testing.T) {
+	l, r := utils.ParseInput(input)
+	d := utils.ParseDiff(l, r)
+
+	sum := 0
+	for _, p := range d {
+		sum += p
+	}
+
+	if sum != 11 {
+		t.Errorf("Expected 11, got %d", sum)
 	}
 }
