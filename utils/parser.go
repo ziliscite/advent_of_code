@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// ParseInput splits the input into two sorted slices
-func ParseInput(input string) ([]int, []int) {
+// ParseInputToTwoSlice splits the input string into two sorted slices of int
+func ParseInputToTwoSlice(input string) ([]int, []int) {
 	s := strings.ReplaceAll(input, "\r\n", "\n")
 	n := strings.ReplaceAll(s, "\r", "\n")
 
@@ -37,4 +37,31 @@ func ParseInput(input string) ([]int, []int) {
 	sort.Ints(r)
 
 	return l, r
+}
+
+// ParseInputTo2DSlice parse the input string into a 2d slice of int
+func ParseInputTo2DSlice(input string) [][]int {
+	s := strings.ReplaceAll(input, "\r\n", "\n")
+	n := strings.ReplaceAll(s, "\r", "\n")
+
+	d := strings.Split(n, "\n")
+
+	l := make([][]int, 0)
+	for _, p := range d {
+		nl := strings.Split(p, " ")
+
+		il := make([]int, len(nl))
+		for i, m := range nl {
+			n, err := strconv.Atoi(m)
+			if err != nil {
+				panic(err)
+			}
+
+			il[i] = n
+		}
+
+		l = append(l, il)
+	}
+
+	return l
 }

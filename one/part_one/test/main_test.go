@@ -14,7 +14,7 @@ var left = []int{3, 4, 2, 1, 3, 3}
 var right = []int{4, 3, 5, 3, 9, 3}
 
 func TestParseInput(t *testing.T) {
-	l, r := utils.ParseInput(input)
+	l, r := utils.ParseInputToTwoSlice(input)
 
 	sort.Ints(left)
 	sort.Ints(right)
@@ -33,7 +33,7 @@ func TestParseInput(t *testing.T) {
 }
 
 func TestParseDiff(t *testing.T) {
-	l, r := utils.ParseInput(input)
+	l, r := utils.ParseInputToTwoSlice(input)
 	d := utils.ParseDiff(l, r)
 
 	for i, p := range d {
@@ -49,7 +49,7 @@ func TestParseDiff(t *testing.T) {
 }
 
 func TestSolution(t *testing.T) {
-	l, r := utils.ParseInput(input)
+	l, r := utils.ParseInputToTwoSlice(input)
 	d := utils.ParseDiff(l, r)
 
 	sum := 0

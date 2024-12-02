@@ -10,7 +10,7 @@ import (
 var input string
 
 func main() {
-	l, r := utils.ParseInput(input)
+	l, r := utils.ParseInputToTwoSlice(input)
 	d := utils.ParseDiff(l, r)
 
 	sum := 0

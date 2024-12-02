@@ -10,7 +10,7 @@ import (
 var input string
 
 func main() {
-	l, r := utils.ParseInput(input)
+	l, r := utils.ParseInputToTwoSlice(input)
 
 	sl := make([]int, len(l))
 	for i, _ := range l {
