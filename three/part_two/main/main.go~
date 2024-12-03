@@ -66,12 +66,16 @@ func main() {
 				Clear(&mul, &num1, &num2, &do)
 			}
 		case ')':
-			if mul.Prev() == "," && num1.Len() > 0 && num2.Len() > 0 && do.IsDo {
+			fmt.Println(do.PrevPrev())
+			if mul.Prev() == "," && num1.Len() > 0 && num2.Len() > 0 {
 				n1, _ := num1.Return()
 				n2, _ := num2.Return()
 
 				val := n1 * n2
-				valid = append(valid, val)
+
+				if do.IsDo {
+					valid = append(valid, val)
+				}
 			} else if do.PrevPrev() == "o" {
 				do.IsDo = true
 			} else if do.PrevPrev() == "t" {

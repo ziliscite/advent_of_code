@@ -79,3 +79,36 @@ func (s *Stack) Return() string {
 
 	return mul
 }
+
+// Instruction to keep tracks of valid instructions
+type Instruction struct {
+	Items []string
+	IsDo  bool
+}
+
+func (s *Instruction) Push(data string) {
+	s.Items = append(s.Items, data)
+}
+
+func (s *Instruction) Prev() string {
+	if len(s.Items) == 0 {
+		return ""
+	}
+
+	return s.Items[len(s.Items)-1]
+}
+
+func (s *Instruction) PrevPrev() string {
+	if len(s.Items) == 0 {
+		return ""
+	}
+
+	return s.Items[len(s.Items)-3]
+}
+
+func (s *Instruction) Clear() {
+	if len(s.Items) == 0 {
+		return
+	}
+	s.Items = make([]string, 0)
+}
